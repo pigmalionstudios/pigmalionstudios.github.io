@@ -152,7 +152,7 @@ Finalmente, tenemos al encargado de los eventos de la interfaz. Tal vez un nombr
 
 <b>Finalizando...</b>
 
-A esta altura solo resta dejarles el acceso al repo git, instarlos a adentrarse en el còdigo, modificarlo, jugar con él y dejar sus comentarios al final del post. ¡Espero que les haya sido útil!
+A esta altura solo resta dejarles el acceso al <a href="https://github.com/pigmalionstudios/sliding-tabs">repo git</a>, instarlos a adentrarse en el còdigo, modificarlo, jugar con él y dejar sus comentarios al final del post. ¡Espero que les haya sido útil!
 
 Por `Gustavo Alejandro Gramajo`, para Pigmalion Studios.
 
