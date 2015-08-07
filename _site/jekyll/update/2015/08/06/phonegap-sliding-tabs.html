@@ -10,7 +10,7 @@
   <meta name="description" content="Porque un video vale mas que mil palabras, veamos primero la app en acción en iOS…">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://127.0.0.1:4000/jekyll/update/2015/08/06/phonega-sliding-tabs.html">
+  <link rel="canonical" href="http://127.0.0.1:4000/jekyll/update/2015/08/06/phonegap-sliding-tabs.html">
   <link rel="alternate" type="application/rss+xml" title="Pigmalion Studios Blog" href="http://127.0.0.1:4000/feed.xml" />
 </head>
 
@@ -96,7 +96,23 @@ Es relativamente simple, luego de familiarizarse con el framework, obtener un pr
 
 <p><b>Arquitectura y funcionamiento</b></p>
 
+<p>Comencemos primero por mostrar la estructura de archivos del proyecto:</p>
+
+<div style="clear: both; height: 350px;">
+    <img src="http://127.0.0.1:4000/assets/project_structure.png" style="height: 100%;" />
+</div>
+
+<p><br /></p>
+
+<p>Tengan en mente que nos centraremos exclusivamente en el contenido de <code>www/js/App</code> y en <code>index.html</code>.</p>
+
 <p><b>Tabs</b></p>
+
+<div style="clear: both;">
+    <img src="http://127.0.0.1:4000/assets/tabs.png" style="height: 100%;" />
+</div>
+
+<p><br /></p>
 
 <p>La estructura html para los tabs es muy sencilla:</p>
 
@@ -114,28 +130,36 @@ Es relativamente simple, luego de familiarizarse con el framework, obtener un pr
 <span class="sr">    &lt;div class=&quot;tabSeparator&quot;&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1006&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;tab&quot;</span><span class="o">&gt;</span><span class="no">ABOUT</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/div&gt;</span>
 
-<span class="sr">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;currTabSelected&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;tab_underline&quot;</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt;</span></code></pre></div>
+<span class="sr">    &lt;!-- UNCOMMENT THIS TO GET MORE TABS; CHECK ALSO MIN_TAB_ID, MAX_TAB_ID AND HEADER_STYLES IN CONFIG.JS</span>
+<span class="sr">         ALWAYS USE CONSECUTIVE ID NUMBERS!!</span>
+<span class="sr">    &lt;div id=&quot;1007&quot; class=&quot;tab&quot;&gt;OTHER APPS&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;tabSeparator&quot;</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt;</span>
+<span class="sr">    &lt;div id=&quot;1008&quot; class=&quot;tab&quot;&gt;SOCIAL&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;tabSeparator&quot;</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt;</span>
+<span class="sr">    &lt;div id=&quot;1009&quot; class=&quot;tab&quot;&gt;FRIENDS&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="sr">/div&gt;</span>
+<span class="sr">&lt;div id=&quot;currTabSelected&quot; class=&quot;tab_underline&quot;&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span></code></pre></div>
 
-<p>La cantidad de tabs es personalizable; solo hay que tener cuidado de asignarles id’s adecuados (1007, 1008, 1009…)
-y de modificar los siguientes parametros en <code>Config</code></p>
+<p>El id del primer (<code>MIN_TAB_ID</code>) y del último (<code>MAX_TAB_ID</code>) tab de la app siempre debe ser igual a los especificados en <code>Config.js</code>:</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-<span class="ss">MIN_TAB_ID</span><span class="p">:</span> <span class="mi">1001</span><span class="p">,</span>
-<span class="ss">MAX_TAB_ID</span><span class="p">:</span> <span class="mi">1006</span><span class="p">,</span>
-<span class="ss">TABS_NUMBER</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+<span class="ss">MIN_TAB_ID</span><span class="p">:</span> <span class="mi">1001</span><span class="p">,</span> <span class="sr">//</span> <span class="s2">&quot;MAIN&quot;</span> <span class="no">TAB</span>
+<span class="ss">MAX_TAB_ID</span><span class="p">:</span> <span class="mi">1006</span><span class="p">,</span> <span class="sr">//</span> <span class="s2">&quot;ABOUT&quot;</span> <span class="no">TAB</span>
 <span class="ss">HEADER_STYLES</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;1001&quot;</span> <span class="p">:</span> <span class="s2">&quot;color_main&quot;</span><span class="p">,</span> <span class="s2">&quot;1002&quot;</span> <span class="p">:</span> <span class="s2">&quot;color_news&quot;</span><span class="p">,</span> <span class="s2">&quot;1003&quot;</span> <span class="p">:</span> <span class="s2">&quot;color_popular&quot;</span><span class="p">,</span> 
         <span class="s2">&quot;1004&quot;</span> <span class="p">:</span> <span class="s2">&quot;color_favorites&quot;</span><span class="p">,</span> <span class="s2">&quot;1005&quot;</span> <span class="p">:</span> <span class="s2">&quot;color_configuration&quot;</span><span class="p">,</span> <span class="s2">&quot;1006&quot;</span> <span class="p">:</span> <span class="s2">&quot;color_about&quot;</span><span class="p">}</span>
 <span class="o">.</span><span class="n">.</span><span class="o">.</span></code></pre></div>
 
+<p>El array <code>HEADER_STYLES</code> debe ser modificado también si se aumenta o disminuye la cantidad de tabs. Este vector contiene los estilos que se aplican al header cada vez que se transiciona a un nuevo tab (o se accede al detalle de un tab).</p>
+
 <p><b>Swipe</b></p>
 
-<p>Toda la funcionalidad está en <code>SwipeManager</code>. La implementación es un tanto compleja, pero existen algunos settings que se pueden modificar rapidamente acorde a los gustos y/o necesidades:</p>
+<p>Toda la funcionalidad está en <code>SwipeManager.js</code>. La implementación es un tanto compleja, pero existen algunos settings que se pueden modificar rapidamente acorde a los gustos y/o necesidades:</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">var</span> <span class="no">MIN_TOLERANCE_X_FOR_SWIPE</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="sr">//</span> <span class="n">pasados</span> <span class="n">los</span> <span class="mi">40</span> <span class="n">px</span><span class="p">,</span> <span class="n">al</span> <span class="n">levantar</span> <span class="n">el</span> <span class="n">dedo</span> <span class="n">el</span> <span class="n">swipe</span> <span class="n">continuara</span> <span class="n">hasta</span> <span class="n">alcanzar</span> <span class="n">la</span> <span class="n">siguiente</span> <span class="n">pantalla</span>
 <span class="n">var</span> <span class="no">TRANSITION_TIME</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span> <span class="sr">//</span> <span class="n">el</span> <span class="n">tiempo</span> <span class="n">que</span> <span class="n">toma</span> <span class="n">en</span> <span class="n">hacer</span> <span class="n">el</span> <span class="n">swipe</span></code></pre></div>
 
-<p><code>SwipeManager</code> maneja los gestos de swipe, dispara callbacks cuando una transiciòn sucede (a través de <code>ViewTransitionListener.viewTransitioned()</code>), controla el estado  de los tabs y sus correspondientes animaciones.</p>
+<p><code>SwipeManager.js</code> maneja los gestos de swipe, dispara callbacks cuando una transiciòn sucede (a través de <code>ViewTransitionListener.viewTransitioned()</code>), controla el estado  de los tabs y sus correspondientes animaciones.</p>
 
 <p><b>ViewTransitionListener</b></p>
 
@@ -143,19 +167,18 @@ y de modificar los siguientes parametros en <code>Config</code></p>
 
 <p><b>Paginas y Detalle</b></p>
 
-<p>Los nodos <code>mainView</code> y <code>detail</code> son hermanos dentro de <code>body</code>. 
-Para ver el detalle de un item en particular se hace un toggle entre ambas (show <code>detail</code>, hide <code>mainView</code>).
-Para volver a <code>mainView</code>, se hace la inversa.
-Esta lógica la maneja <code>DetailView</code>.</p>
+<p>Los nodos <code>master</code> y <code>detail</code> son hermanos dentro de <code>body</code>. 
+Para ver el detalle de un item en particular se hace un toggle entre ambas (show <code>detail</code>, hide <code>master</code>).
+Para volver a <code>master</code>, se hace la inversa.
+Esta lógica es manejada por <code>DetailView.js</code>.</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
 
-    <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;mainView&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;mainView&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;master&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="o">&gt;</span>
         
-        <span class="o">&lt;!--</span> <span class="no">MAIN</span> <span class="no">HEADER</span> <span class="o">--&gt;</span>
         <span class="o">.</span><span class="n">.</span><span class="o">.</span>
         <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-        
+
         <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;pages&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pages&quot;</span><span class="o">&gt;</span>
 
             <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;page_main&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page overthrow&quot;</span><span class="o">&gt;</span>
@@ -169,15 +192,12 @@ Esta lógica la maneja <code>DetailView</code>.</p>
                 
         <span class="o">&lt;</span><span class="sr">/div&gt;</span>
 
-
 <span class="sr">    &lt;/</span><span class="n">div</span><span class="o">&gt;</span> 
 
     <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;display: none;&quot;</span><span class="o">&gt;</span>
 
-        <span class="o">&lt;!--</span> <span class="no">DETAIL</span> <span class="no">HEADER</span> <span class="o">--&gt;</span>
         <span class="o">.</span><span class="n">.</span><span class="o">.</span>
         <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-
         <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;detail_body&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="o">&gt;</span>
             <span class="no">Here</span> <span class="n">goes</span> <span class="n">your</span> <span class="n">detailed</span> <span class="n">data</span>
         <span class="o">&lt;</span><span class="sr">/div&gt;</span>
@@ -185,6 +205,25 @@ Esta lógica la maneja <code>DetailView</code>.</p>
 <span class="sr">    &lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 
 <span class="o">&lt;</span><span class="sr">/body&gt;</span></code></pre></div>
+
+<p>Por ejemplo, en estas capturas <code>master</code> esta visible (mostrando <code>page_about</code> y <code>page_favorites</code>)</p>
+
+<div style="clear: both; height: 350px;">
+
+    <img src="http://127.0.0.1:4000/assets/master_about.png" style="float: left; height: 100%;" />
+    <img src="http://127.0.0.1:4000/assets/master_favorites.png" style="float: left; height: 100%;" />
+
+</div>
+
+<p><br /></p>
+
+<p>Y en esta, es <code>detail</code> quien está visible (luego de hacer tap en <code>GO TO DETAIL VIEW</code>, desde <code>page_news</code>)</p>
+
+<div style="clear: both; height: 350px;">
+    <img src="http://127.0.0.1:4000/assets/detail_news.png" style="height: 100%;" />
+</div>
+
+<p><br /></p>
 
 <p><b>UIListener</b></p>
 
@@ -199,7 +238,7 @@ Esta lógica la maneja <code>DetailView</code>.</p>
 <p><b>Próximos posts</b></p>
 
 <p>Sliding Tabs - Parte 2: Manejo de contenido dinámico. Llamadas ajax, obtención de datos, creación, populado y captura de eventos de listas.<br />
-Sliding Tabs - Parte 3: Pull to refresh / Pull to page. Extensión de <code>SwipeManager</code> para soportar ambos métodos de actualización de contenidos.</p>
+Sliding Tabs - Parte 3: Pull to refresh / Pull to page. Extensión de <code>SwipeManager.js</code> para soportar ambos métodos de actualización de contenidos.</p>
 
 
   </article>

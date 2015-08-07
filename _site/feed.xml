@@ -6,8 +6,8 @@
 </description>
     <link>http://127.0.0.1:4000/</link>
     <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Aug 2015 13:30:51 -0300</pubDate>
-    <lastBuildDate>Fri, 07 Aug 2015 13:30:51 -0300</lastBuildDate>
+    <pubDate>Fri, 07 Aug 2015 17:58:30 -0300</pubDate>
+    <lastBuildDate>Fri, 07 Aug 2015 17:58:30 -0300</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -46,7 +46,23 @@ Es relativamente simple, luego de familiarizarse con el framework, obtener un pr
 
 &lt;p&gt;&lt;b&gt;Arquitectura y funcionamiento&lt;/b&gt;&lt;/p&gt;
 
+&lt;p&gt;Comencemos primero por mostrar la estructura de archivos del proyecto:&lt;/p&gt;
+
+&lt;div style=&quot;clear: both; height: 350px;&quot;&gt;
+    &lt;img src=&quot;http://127.0.0.1:4000/assets/project_structure.png&quot; style=&quot;height: 100%;&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tengan en mente que nos centraremos exclusivamente en el contenido de &lt;code&gt;www/js/App&lt;/code&gt; y en &lt;code&gt;index.html&lt;/code&gt;.&lt;/p&gt;
+
 &lt;p&gt;&lt;b&gt;Tabs&lt;/b&gt;&lt;/p&gt;
+
+&lt;div style=&quot;clear: both;&quot;&gt;
+    &lt;img src=&quot;http://127.0.0.1:4000/assets/tabs.png&quot; style=&quot;height: 100%;&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;La estructura html para los tabs es muy sencilla:&lt;/p&gt;
 
@@ -64,28 +80,36 @@ Es relativamente simple, luego de familiarizarse con el framework, obtener un pr
 &lt;span class=&quot;sr&quot;&gt;    &amp;lt;div class=&amp;quot;tabSeparator&amp;quot;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;1006&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;tab&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;ABOUT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&amp;gt;&lt;/span&gt;
 
-&lt;span class=&quot;sr&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;currTabSelected&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;tab_underline&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;sr&quot;&gt;    &amp;lt;!-- UNCOMMENT THIS TO GET MORE TABS; CHECK ALSO MIN_TAB_ID, MAX_TAB_ID AND HEADER_STYLES IN CONFIG.JS&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;         ALWAYS USE CONSECUTIVE ID NUMBERS!!&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;    &amp;lt;div id=&amp;quot;1007&amp;quot; class=&amp;quot;tab&amp;quot;&amp;gt;OTHER APPS&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;tabSeparator&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;    &amp;lt;div id=&amp;quot;1008&amp;quot; class=&amp;quot;tab&amp;quot;&amp;gt;SOCIAL&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;tabSeparator&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;    &amp;lt;div id=&amp;quot;1009&amp;quot; class=&amp;quot;tab&amp;quot;&amp;gt;FRIENDS&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;&amp;lt;div id=&amp;quot;currTabSelected&amp;quot; class=&amp;quot;tab_underline&amp;quot;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;La cantidad de tabs es personalizable; solo hay que tener cuidado de asignarles id’s adecuados (1007, 1008, 1009…)
-y de modificar los siguientes parametros en &lt;code&gt;Config&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;El id del primer (&lt;code&gt;MIN_TAB_ID&lt;/code&gt;) y del último (&lt;code&gt;MAX_TAB_ID&lt;/code&gt;) tab de la app siempre debe ser igual a los especificados en &lt;code&gt;Config.js&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;MIN_TAB_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;MAX_TAB_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1006&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;TABS_NUMBER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;MIN_TAB_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;MAIN&amp;quot;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TAB&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;MAX_TAB_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1006&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;ABOUT&amp;quot;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TAB&lt;/span&gt;
 &lt;span class=&quot;ss&quot;&gt;HEADER_STYLES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;1001&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;color_main&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1002&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;color_news&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1003&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;color_popular&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
         &lt;span class=&quot;s2&quot;&gt;&amp;quot;1004&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;color_favorites&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1005&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;color_configuration&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1006&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;color_about&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;El array &lt;code&gt;HEADER_STYLES&lt;/code&gt; debe ser modificado también si se aumenta o disminuye la cantidad de tabs. Este vector contiene los estilos que se aplican al header cada vez que se transiciona a un nuevo tab (o se accede al detalle de un tab).&lt;/p&gt;
+
 &lt;p&gt;&lt;b&gt;Swipe&lt;/b&gt;&lt;/p&gt;
 
-&lt;p&gt;Toda la funcionalidad está en &lt;code&gt;SwipeManager&lt;/code&gt;. La implementación es un tanto compleja, pero existen algunos settings que se pueden modificar rapidamente acorde a los gustos y/o necesidades:&lt;/p&gt;
+&lt;p&gt;Toda la funcionalidad está en &lt;code&gt;SwipeManager.js&lt;/code&gt;. La implementación es un tanto compleja, pero existen algunos settings que se pueden modificar rapidamente acorde a los gustos y/o necesidades:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MIN_TOLERANCE_X_FOR_SWIPE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pasados&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;los&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;al&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;levantar&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dedo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swipe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;continuara&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hasta&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alcanzar&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;la&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;siguiente&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pantalla&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TRANSITION_TIME&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tiempo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;que&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;toma&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;en&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hacer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swipe&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code&gt;SwipeManager&lt;/code&gt; maneja los gestos de swipe, dispara callbacks cuando una transiciòn sucede (a través de &lt;code&gt;ViewTransitionListener.viewTransitioned()&lt;/code&gt;), controla el estado  de los tabs y sus correspondientes animaciones.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SwipeManager.js&lt;/code&gt; maneja los gestos de swipe, dispara callbacks cuando una transiciòn sucede (a través de &lt;code&gt;ViewTransitionListener.viewTransitioned()&lt;/code&gt;), controla el estado  de los tabs y sus correspondientes animaciones.&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;ViewTransitionListener&lt;/b&gt;&lt;/p&gt;
 
@@ -93,19 +117,18 @@ y de modificar los siguientes parametros en &lt;code&gt;Config&lt;/code&gt;&lt;/
 
 &lt;p&gt;&lt;b&gt;Paginas y Detalle&lt;/b&gt;&lt;/p&gt;
 
-&lt;p&gt;Los nodos &lt;code&gt;mainView&lt;/code&gt; y &lt;code&gt;detail&lt;/code&gt; son hermanos dentro de &lt;code&gt;body&lt;/code&gt;. 
-Para ver el detalle de un item en particular se hace un toggle entre ambas (show &lt;code&gt;detail&lt;/code&gt;, hide &lt;code&gt;mainView&lt;/code&gt;).
-Para volver a &lt;code&gt;mainView&lt;/code&gt;, se hace la inversa.
-Esta lógica la maneja &lt;code&gt;DetailView&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Los nodos &lt;code&gt;master&lt;/code&gt; y &lt;code&gt;detail&lt;/code&gt; son hermanos dentro de &lt;code&gt;body&lt;/code&gt;. 
+Para ver el detalle de un item en particular se hace un toggle entre ambas (show &lt;code&gt;detail&lt;/code&gt;, hide &lt;code&gt;master&lt;/code&gt;).
+Para volver a &lt;code&gt;master&lt;/code&gt;, se hace la inversa.
+Esta lógica es manejada por &lt;code&gt;DetailView.js&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
 
-    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;mainView&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;mainView&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;master&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;master&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
         
-        &lt;span class=&quot;o&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MAIN&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HEADER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-        
+
         &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;pages&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;pages&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
 
             &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;page_main&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;page overthrow&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -119,15 +142,12 @@ Esta lógica la maneja &lt;code&gt;DetailView&lt;/code&gt;.&lt;/p&gt;
                 
         &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&amp;gt;&lt;/span&gt;
 
-
 &lt;span class=&quot;sr&quot;&gt;    &amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 
 
     &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;detail&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;display: none;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
 
-        &lt;span class=&quot;o&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DETAIL&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HEADER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
         &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;detail_body&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;detail&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
             &lt;span class=&quot;no&quot;&gt;Here&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;goes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;your&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;detailed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&amp;gt;&lt;/span&gt;
@@ -135,6 +155,25 @@ Esta lógica la maneja &lt;code&gt;DetailView&lt;/code&gt;.&lt;/p&gt;
 &lt;span class=&quot;sr&quot;&gt;    &amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/body&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Por ejemplo, en estas capturas &lt;code&gt;master&lt;/code&gt; esta visible (mostrando &lt;code&gt;page_about&lt;/code&gt; y &lt;code&gt;page_favorites&lt;/code&gt;)&lt;/p&gt;
+
+&lt;div style=&quot;clear: both; height: 350px;&quot;&gt;
+
+    &lt;img src=&quot;http://127.0.0.1:4000/assets/master_about.png&quot; style=&quot;float: left; height: 100%;&quot; /&gt;
+    &lt;img src=&quot;http://127.0.0.1:4000/assets/master_favorites.png&quot; style=&quot;float: left; height: 100%;&quot; /&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Y en esta, es &lt;code&gt;detail&lt;/code&gt; quien está visible (luego de hacer tap en &lt;code&gt;GO TO DETAIL VIEW&lt;/code&gt;, desde &lt;code&gt;page_news&lt;/code&gt;)&lt;/p&gt;
+
+&lt;div style=&quot;clear: both; height: 350px;&quot;&gt;
+    &lt;img src=&quot;http://127.0.0.1:4000/assets/detail_news.png&quot; style=&quot;height: 100%;&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;UIListener&lt;/b&gt;&lt;/p&gt;
 
@@ -149,12 +188,12 @@ Esta lógica la maneja &lt;code&gt;DetailView&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Próximos posts&lt;/b&gt;&lt;/p&gt;
 
 &lt;p&gt;Sliding Tabs - Parte 2: Manejo de contenido dinámico. Llamadas ajax, obtención de datos, creación, populado y captura de eventos de listas.&lt;br /&gt;
-Sliding Tabs - Parte 3: Pull to refresh / Pull to page. Extensión de &lt;code&gt;SwipeManager&lt;/code&gt; para soportar ambos métodos de actualización de contenidos.&lt;/p&gt;
+Sliding Tabs - Parte 3: Pull to refresh / Pull to page. Extensión de &lt;code&gt;SwipeManager.js&lt;/code&gt; para soportar ambos métodos de actualización de contenidos.&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 06 Aug 2015 09:31:45 -0300</pubDate>
-        <link>http://127.0.0.1:4000/jekyll/update/2015/08/06/phonega-sliding-tabs.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/jekyll/update/2015/08/06/phonega-sliding-tabs.html</guid>
+        <link>http://127.0.0.1:4000/jekyll/update/2015/08/06/phonegap-sliding-tabs.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/jekyll/update/2015/08/06/phonegap-sliding-tabs.html</guid>
         
         
         <category>jekyll</category>
