@@ -18,7 +18,7 @@ Porque un video vale mas que mil palabras, veamos primero la app en acción en `
 
 Esta app cuenta con las siguientes caracteristicas principales:
 
-- Multiplataforma, con experiencia muy cercana a la nativa, gracias a <a href="http://phonegap.com/">Phonegap</a>. Optimizado para `iOS`, `Android` y `Blackberry 10`
+- Multiplataforma, con experiencia muy cercana a la nativa, gracias a <a href="http://phonegap.com/">Phonegap (Version 4.1.2)</a>. Optimizado para `iOS`, `Android` y `Blackberry 10`
 - Swipe entre pantallas, a través de gestures o tabs.
 - Tabs animados al mejor estilo `Play Store de Google`
 - Scrolling pensado para Mobile (Usando <a href="https://www.filamentgroup.com/lab/overthrow.html">Overthrow.js</a>)
@@ -75,33 +75,12 @@ La estructura html para los tabs es muy sencilla:
     <div class="tabSeparator"></div>
     <div id="1006" class="tab">ABOUT...</div>
 
-    <!-- UNCOMMENT THIS TO GET MORE TABS; CHECK ALSO MIN_TAB_ID, MAX_TAB_ID AND HEADER_STYLES IN CONFIG.JS
-         ALWAYS USE CONSECUTIVE ID NUMBERS!!
-    <div id="1007" class="tab">OTHER APPS</div>
-    <div class="tabSeparator"></div>
-    <div id="1008" class="tab">SOCIAL</div>
-    <div class="tabSeparator"></div>
-    <div id="1009" class="tab">FRIENDS</div>
-    -->
 </div>
 <div id="currTabSelected" class="tab_underline"></div>
 
 {% endhighlight %}
 
-El id del primer (`MIN_TAB_ID`) y del último (`MAX_TAB_ID`) tab de la app siempre debe ser igual a los especificados en `Config.js`:
-
-{% highlight ruby %}
-
-...
-MIN_TAB_ID: 1001, // "MAIN" TAB
-MAX_TAB_ID: 1006, // "ABOUT" TAB
-HEADER_STYLES: {"1001" : "color_main", "1002" : "color_news", "1003" : "color_popular", 
-        "1004" : "color_favorites", "1005" : "color_configuration", "1006" : "color_about"}
-...
-
-{% endhighlight %}
-
-El array `HEADER_STYLES` debe ser modificado también si se aumenta o disminuye la cantidad de tabs. Este vector contiene los estilos que se aplican al header cada vez que se transiciona a un nuevo tab (o se accede al detalle de un tab).
+Es `MUY IMPORTANTE` usar ids numéricos y consecutivos en los divs, ya que la implementación se basa en ese supuesto.
 
 <b>Swipe</b>
 
@@ -114,12 +93,11 @@ var TRANSITION_TIME = 300; // el tiempo que toma en hacer el swipe
 
 {% endhighlight %}
 
-`SwipeManager.js` maneja los gestos de swipe, dispara callbacks cuando una transiciòn sucede (a través de `ViewTransitionListener.viewTransitioned()`), controla el estado  de los tabs y sus correspondientes animaciones.
+`SwipeManager.js` maneja los gestos de swipe, dispara callbacks cuando una transiciòn sucede (a través de `ViewTransitionListener.viewTransitioned()`), controla el estado  de los tabs y sus correspondientes animaciones. La entidad incluso generará un mensaje de error si la cantidad de páginas es distinta a la cantidad de tabs.
 
 <b>ViewTransitionListener</b>
 
 Reacciona ante las transiciones (en la implementación actual, cambia el color del header del detail para que sea consistente con el del tab correspondiente) y guarda el id de la vista/tab actual. Esto último permite saber en todo momento cual de todas las vistas principales está siendo mostrada en pantalla. 
-
 
 <b>Paginas y Detalle</b>
 
@@ -190,9 +168,44 @@ Y en esta, es `detail` quien está visible (luego de hacer tap en `GO TO DETAIL 
 
 Finalmente, tenemos al encargado de los eventos de la interfaz. Tal vez un nombre más adecuado podria ser StaticUIListener, dado que solo se encarga de los elementos estáticos de toda la app (no hay elementos dinámicos en esta demo).
 
+<b>Personalizar la cantidad de páginas/tabs</b>
+
+Los pasos a seguir si, por ejemplo, se quiere agregar un tab y una página más son:
+
+- Dentro de `swipeableTabs`, y despues del ultimo tab existente, se debe agregar
+
+{% highlight ruby %}
+
+<div class="tabSeparator"></div>
+<div id="1007" class="tab">SOCIAL</div>
+
+{% endhighlight %}
+
+- Dentro de `pages`, y después de la última página existente, se debe agregar
+
+{% highlight ruby %}
+
+<div id="page_social" class="page overthrow">
+</div>
+
+{% endhighlight %}
+
+- En `ViewTransitionListener`, modificar el array `HEADER_STYLES`, agregando un nuevo key/value.
+La clave debe ser "1007"; el valor, el nombre de una clase css que se desee:
+
+{% highlight ruby %}
+
+var HEADER_STYLES = {"1001" : "color_main", "1002" : "color_news", "1003" : "color_popular", 
+    "1004" : "color_favorites", "1005" : "color_configuration", "1006" : "color_about" ,"1007" : "color_social"};
+
+{% endhighlight %}
+
 <b>Finalizando...</b>
 
-A esta altura solo resta dejarles el acceso al <a href="https://github.com/pigmalionstudios/sliding-tabs">repo git</a>, instarlos a adentrarse en el còdigo, modificarlo, jugar con él y dejar sus comentarios al final del post. ¡Espero que les haya sido útil!
+A esta altura solo resta dejarles el acceso al <a href="https://github.com/pigmalionstudios/sliding-tabs">repo git</a>, instarlos a adentrarse en el còdigo, modificarlo y jugar con él.
+¡Ah! Y no dejen de chequear `Educ.ar Noticias`, una app basada totalmente en la solución recien presentada, publicada en los stores de
+<a href="https://play.google.com/store/apps/details?id=ar.gob.educarnoticias&hl=es_419">Android</a>, <a href="https://itunes.apple.com/us/app/educ.ar-noticias/id896186536?l=es&mt=8">IOS</a> y Blackberry 10.
+No olviden dejar sus comentarios al final del post. ¡Espero que les haya sido útil!
 
 Por `Gustavo Alejandro Gramajo`, para Pigmalion Studios.
 

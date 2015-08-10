@@ -6,8 +6,8 @@
 </description>
     <link>http://127.0.0.1:4000/</link>
     <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Aug 2015 17:58:30 -0300</pubDate>
-    <lastBuildDate>Fri, 07 Aug 2015 17:58:30 -0300</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2015 10:42:13 -0300</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2015 10:42:13 -0300</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -181,7 +181,10 @@ Esta lógica es manejada por &lt;code&gt;DetailView.js&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Finalizando…&lt;/b&gt;&lt;/p&gt;
 
-&lt;p&gt;A esta altura solo resta dejarles el acceso al &lt;a href=&quot;https://github.com/pigmalionstudios/sliding-tabs&quot;&gt;repo git&lt;/a&gt;, instarlos a adentrarse en el còdigo, modificarlo, jugar con él y dejar sus comentarios al final del post. ¡Espero que les haya sido útil!&lt;/p&gt;
+&lt;p&gt;A esta altura solo resta dejarles el acceso al &lt;a href=&quot;https://github.com/pigmalionstudios/sliding-tabs&quot;&gt;repo git&lt;/a&gt;, instarlos a adentrarse en el còdigo, modificarlo y jugar con él.
+¡Ah! Y no dejen de chequear &lt;code&gt;Educ.ar Noticias&lt;/code&gt;, una app basada totalmente en la solución recien presentada, publicada en los stores de
+&lt;a href=&quot;https://play.google.com/store/apps/details?id=ar.gob.educarnoticias&amp;amp;hl=es_419&quot;&gt;Android&lt;/a&gt;, &lt;a href=&quot;https://itunes.apple.com/us/app/educ.ar-noticias/id896186536?l=es&amp;amp;mt=8&quot;&gt;IOS&lt;/a&gt; y Blackberry 10.
+No olviden dejar sus comentarios al final del post. ¡Espero que les haya sido útil!&lt;/p&gt;
 
 &lt;p&gt;Por &lt;code&gt;Gustavo Alejandro Gramajo&lt;/code&gt;, para Pigmalion Studios.&lt;/p&gt;
 
