@@ -61,7 +61,7 @@ La estructura html para los tabs es muy sencilla:
 
 {% highlight ruby %}
 
-<div id="swipeableTabs" class="menu">
+<div id="selectableTabs" class="menu">
 
     <div id="1001" class="tab" style="opacity: 1">MAIN</div>
     <div class="tabSeparator"></div>
@@ -76,7 +76,6 @@ La estructura html para los tabs es muy sencilla:
     <div id="1006" class="tab">ABOUT...</div>
 
 </div>
-<div id="currTabSelected" class="tab_underline"></div>
 
 {% endhighlight %}
 
@@ -89,7 +88,9 @@ Toda la funcionalidad está en `SwipeManager.js`. La implementación es un tanto
 {% highlight ruby %}
 
 var MIN_TOLERANCE_X_FOR_SWIPE = 40; // pasados los 40 px, al levantar el dedo el swipe continuara hasta alcanzar la siguiente pantalla
-var TRANSITION_TIME = 300; // el tiempo que toma en hacer el swipe
+var PAGE_TRANSITION_TIME = "0.3s"; // el tiempo que toma en hacer el swipe luego de levandar el dedo
+var TAB_TRANSITION_TIME = PAGE_TRANSITION_TIME; // el tiempo que toma en hacer el swipe en los tabs luego de terminar el click en algun tab
+var ENABLE_MANUAL_DRAG_ON_TABS = true; //este feature todavia está en beta, pero pueden ir probandolo; activa o desactiva el swipe dentro de los tabs
 
 {% endhighlight %}
 
@@ -172,7 +173,7 @@ Finalmente, tenemos al encargado de los eventos de la interfaz. Tal vez un nombr
 
 Los pasos a seguir si, por ejemplo, se quiere agregar un tab y una página más son:
 
-- Dentro de `swipeableTabs`, y despues del ultimo tab existente, se debe agregar
+- Dentro de `selectableTabs`, y despues del ultimo tab existente, se debe agregar
 
 {% highlight ruby %}
 
@@ -199,6 +200,12 @@ var HEADER_STYLES = {"1001" : "color_main", "1002" : "color_news", "1003" : "col
     "1004" : "color_favorites", "1005" : "color_configuration", "1006" : "color_about" ,"1007" : "color_social"};
 
 {% endhighlight %}
+
+<b>Corolario</b>
+
+El propósito de este framework es proveer un punto de partida veloz, configurable y personalizable para quienes tengan en mente crear una app Master-Detail multiplataforma. Como desarrollador, sólo deberás encargarte de definir la cantidad de páginas/tabs, el contenido de cada una de ellas y de darles estilo (ya sea inline o agregando las clases en styles.css).<br>
+Respecto a esto último, cabe mencionar que intencionalmente se ha dejado a `page_news`, `page_popular` y `page_favorites` sin un estilo aplicado (chequeenlo en la app, no tienen siquiera un margin-left o margin-top), y por el contrario, `detail`, `page_configuration`y `page_about` si los tienen (`page_main`seria algo intermedio; no se ve tan mal, pero sigue luciendo intencionalmente descuidado).
+Los que si lo tienen, demuestran cómo puede verse una página con tan sólo un poco de estilo. Los que no, reflejan nuestro deseo de que creen sus propias páginas, con los estilos que más les gusten. Nosotros ofrecemos la arquitectura, pero en sus manos está darles su toque personal y distintivo...  
 
 <b>Finalizando...</b>
 
