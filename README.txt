@@ -10,3 +10,5 @@ Luego, para crear un post, simplemente crear un archivo (o copiar el ya existent
 yyyy-mm-dd-sometitlewithoutspaces.markdown
 
 Darle refresh, y el nuevo post estara disponible a traves de una entrada en la home (http://127.0.0.1:4000/)
+
+Probar todos los cambios localmente, y luego, para subirlos y que esten disponibles en http://pigmalionstudios.github.io/, solo hay que pushear los cambios a master.
